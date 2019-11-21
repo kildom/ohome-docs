@@ -2,6 +2,18 @@
 Network management commands
 ===========================
 
+### Start wire discovery
+
+| Multiple responses | | |
+|-|-|-|
+| byte | address |
+| byte[] | UID |
+
+| Final response | | |
+|-|-|-|
+| byte |  |
+| byte[] | UID |
+
 ### Read UID
 
 | Response | | |
