@@ -10,7 +10,7 @@ Network management commands
 
 ### Read wire transmission parameters
 
-| Response | | |
+| Response | | ***Unsupported*** if node does not use wire transmission |
 |-|-|-|
 |uint8_t|	block delay|
 |uint8_t|	start delay|
