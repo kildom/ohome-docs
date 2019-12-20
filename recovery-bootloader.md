@@ -1,4 +1,5 @@
 ```
+FOR NRF51
 
 | modified vect table | pages ... | original vect table | bootloader |
   RESET -> bootloader RESET
@@ -46,6 +47,7 @@ get CRC
                 CRC
 > run user event
 run app
+                > soft reset
 run app
 run app
 run app
@@ -68,12 +70,20 @@ run app
 run app
 run app
 
-Init radio (and keep reset values)
+Init radio
     2Mbit,
     5 byte addr (MAGIC value, different for each side)
     8 bit LENGTH
     no S0, S1
     3 byte CRC (including address)
+    
+If bootloader was not catched then do softreset.
+    After softreset check reset reason and go directly to the app.
+
+CRC may be replaced by AES based hash (small footprint because of HW AES accelerator):
+output[16] = 0
+foreach block[32] from input (padding by previous value of block or 0 if input.len < 32)
+    output ^= AES(key = block[0..15], plaintext = block[16..31])
 
 ```
 
