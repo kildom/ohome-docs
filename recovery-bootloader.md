@@ -1,12 +1,14 @@
 ```
 FOR NRF51
 
-| modified vect table | pages ... | original vect table | bootloader + aes_key |
-  RESET -> bootloader RESET
-  Initial SP -> bootloader Initial SP
-  
-original vect table and bootloader are located  at the region protected by PROTREG63 bit.
+      | modified vect table | pages ... | original vect table | bootloader + aes_key |
+        RESET -> bootloader RESET
+        Initial SP -> bootloader Initial SP
 
+      original vect table and bootloader are located  at the region protected by PROTREG63 bit.
+
+Above approach is not safe. App can modify page 0 and make bootloader unusable.
+Enrything (bootloader, irq jumps to app and aes_ket) have to be at the beginnig protected by PROTREG0 bit.
 
 [programmer]    [devide]
 
