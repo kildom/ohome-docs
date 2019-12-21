@@ -97,7 +97,7 @@ If bootloader was not catched then do softreset.
 CRC may be replaced by AES based hash (small footprint because of HW AES accelerator):
 output[16] = 0
 foreach block[32] from input (padding by previous value of block or 0 if input.len < 32)
-    output ^= AES(key = block[0..15], plaintext = block[16..31])
+    output = AES(key = block[0..15], plaintext = output ^ block[16..31])
     
 Encryption:
 *  Both parts have generated AES key = md5(password & devide unique address)
