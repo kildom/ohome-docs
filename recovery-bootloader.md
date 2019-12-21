@@ -10,6 +10,13 @@ FOR NRF51
 Above approach is not safe. App can modify page 0 and make bootloader unusable.
 Enrything (bootloader, irq jumps to app and aes_ket) have to be at the beginnig protected by PROTREG0 bit.
 
+IRQ optimization:
+Last page of bootloader contains direct jumps to IRQ handlers in app.
+Before bootloader starts the app it checks IRQ vectors of the app and compares them with jumps in bootloader.
+If there is a difference bootloader erases page and puts a new jumps there.
+Each entry in jumps page is fixed size, so vectors in page 0 are fixed.
+If verctor in app is unexpected then it falls back to default jump: read app vector value and jump there.
+
 [programmer]    [devide]
 
 > start catch user event
