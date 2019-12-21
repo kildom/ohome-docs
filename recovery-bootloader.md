@@ -43,13 +43,16 @@ send catch 0
 run bootloader
                 bootloader running
 > flash user event
-erase
+erase pages 0..3
                 erase done
 sendBlock 0
 sendBlock 1
 ...
 sendBlock 31 and get status
                 ok / missing block bitmap / error
+                    missing block bitmap - contains 32 bits for blocks 32*N .. 32*N+31
+                    and block in command is in this range. Writing a new block outside
+                    this range clears bits internally in device.
 sendBlock 32
 ...
 sendBlock 347 and get status
