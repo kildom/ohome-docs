@@ -90,16 +90,24 @@ foreach block[32] from input (padding by previous value of block or 0 if input.l
 Encryption:
 *  Both parts have generated AES key = md5(password & devide unique address)
     * device unique address is placed in 'send catched'
-* 'run bootloader' contains AES_OFB encrypted CR = random bytes (different for each connection) and magic bytes
+* 'run bootloader' contains AES_CFB encrypted CR = random bytes (different for each connection) and magic bytes
 * device genrates random connection id (96 bits) and counter start value (32 bits).
+* 'bootloader running' contains AES_CFB (CR, conn_id, counter)
 * all further packets will have following structure:
     * lower 2 bytes of counter in plain text
         (higher 2 bytes of counter other end have to predict based on cyclic property of lower 2 bytes)
-    * IV = AES(conn_id & counter)
-    * ciphertext = AES_OFB(IV, content)
-        (total overhead for encryption and authentication of each packet 2 + 16 = 18 bytes)
+    * ciphertext = AES_PECB(IV = AES(conn_id & counter), content & zeros)
+        (if receiving part gets zeros != 0 then packet was corrupted)
+        (total overhead for encryption and authentication of each packet 2 + zeros bytes)
 * counter is increased on each transmission (except retransmission)
-* 'bootloader running' contains input = (CR, conn_id, counter) (all ecrypted using above method)    
+
+AES_PECB:
+C[0] = AES(IV) ^ P[0]
+C[1] = AES(P[0]) ^ P[1]
+...
+P[0] = AES(IV) ^ C[0]
+P[1] = AES(P[0]) ^ C[1]
+...
 
 AES key is located at the end of bootloader's flash page (end of flash). It is programmed the same time as entire bootloader.
 
