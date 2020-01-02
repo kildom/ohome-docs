@@ -24,6 +24,8 @@ General notes
  	  * It can send request to each device (via master) that forces it to response with some special
 	    pattern that can be used to generate eye diagram. This allows to check signal quality at any
 	    place on the network from any endpoint.
+	  * User should be able to turn on/off quering of that device by master. Master should timeout
+	    if there is no response from that probe (very long time e.g. 8h)
 
 Transaction content
 -----------
