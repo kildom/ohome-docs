@@ -20,6 +20,10 @@ General notes
 	  * Discovery process will be triggerd by the user, e.g. when a new device was connected.
 	  * Discovery process will query each address and wait 25ms (default max response time) for response.
  * 25 ms limit may be changed in this specification if it is too high	
+ * It should be possible to attach special device for electrical diagnostics
+ 	  * It can send request to each device (via master) that forces it to response with some special
+	    pattern that can be used to generate eye diagram. This allows to check signal quality at any
+	    place on the network from any endpoint.
 
 Transaction content
 -----------
