@@ -152,32 +152,40 @@ AES key is located at the end of bootloader's flash page (end of flash). It is p
 
 ```c++
 
-void aes_dctf_block(uint8_t* data, size_t size)
+#define AES_DCTF_ENCRYPT 0
+#define AES_DCTF_DECRYPT 48
+
+
+#define KEY 0
+#define PT 16
+#define CT 32
+
+#define KEY1 0
+#define PT1 16
+#define CT1 32
+#define KEY2 48
+#define PT2 64
+#define CT2 80
+
+#define HASH_IN1 64
+#define HASH_IN2 80
+#define HASH_OUT 96
+
+#define BUFFER_BYTES 112
+
+static uint8_t aes_buffer[BUFFER_BYTES];
+
+static size_t first_key_index; // encryption: first_key_index = KEY1
+                               // decryption: first_key_index = KEY2
+
+
+static void do_aes(uint8_t* data)
 {
-    do_aes(buffer1); // buffer1 contains key1=key, plain=iv
-    do_xor(data, &buffer1[32]);
-    memcpy(&buffer1[16], data, 16);
-    do_aes(buffer2); // buffer2 contains key2=key^1, plain=iv
-    do_xor(data, &buffer2[32]);
-    memcpy(&buffer2[16], &buffer1[16], 16);
-}
-
-```
-
-```c++
-
-typedef void (*block_callback)(uint8_t* data, size_t size);
-
-uint8_t aes_buffer[16 * 3];
-
-static void do_aes()
-{
-    ECB->ECBDATAPTR = aes_buffer;
+    ECB->ECBDATAPTR = data;
     ECB->TASKS_STARTECB = 1;
     while (!ECB->EVENTS_ENDECB);
     ECB->EVENTS_ENDECB = 0;
 }
-
 
 static void do_blocks(uint8_t* data, size_t size, size_t block_size, block_callback callback)
 {
@@ -199,57 +207,44 @@ static void do_xor(uint8_t* data, uint8_t* source, size_t size)
     }
 }
 
+static void aes_dctf_block(uint8_t* data, size_t size)
+{
+    uint8_t* buffer1 = &aes_buffer[KEY1 + first_key_index];
+    uint8_t* buffer2 = &aes_buffer[KEY2 - first_key_index];
+    do_aes(buffer1); // buffer1 contains key=first_key, plain=iv
+    do_xor(data, &buffer1[CT], size);
+    memcpy(&buffer1[PT], data, size);
+    do_aes(buffer2); // buffer2 contains key=second_key, plain=iv
+    do_xor(data, &buffer2[CT], size);
+    memcpy(&buffer2[PT], &buffer1[PT], size);
+}
+
+void aes_dctf_key(uint8_t* key)
+{
+    memcpy(&aes_buffer[KEY1], key, 16);
+    memcpy(&aes_buffer[KEY2], &key[16], 16);
+}
+
+void aes_dctf_crypt(uint8_t* data, size_t size, uint32_t mode, uint8_t* iv)
+{
+    first_key_index = mode;
+    memcpy(&aes_buffer[PT1], iv, 16);
+    memcpy(&aes_buffer[PT2], iv, 16);
+    do_blocks(data, size, 16, aes_dctf_block);
+}
+
 static void aes_hash_block(uint8_t* data, size_t size)
 {
-    memcpy(&aes_buffer[0], data, size);
-    do_xor(&aes_buffer[16], &aes_buffer[32], 16);
-    do_aes();
+    memcpy(&aes_buffer[HASH_IN1], data, size);
+    do_xor(&aes_buffer[HASH_IN2], &aes_buffer[HASH_OUT], 16);
+    do_aes(&aes_buffer[HASH_IN1]);
 }
 
 void aes_hash_calc(uint8_t* data, size_t size, uint8_t* hash)
 {
-    memset(aes_buffer, 0, sizeof(aes_buffer));
+    memset(&aes_buffer[HASH_IN1], 0, 32);
     do_blocks(data, size, 32, aes_hash_block);
-    memcpy(hash, &aes_buffer[32], 16);
+    memcpy(hash, &aes_buffer[HASH_OUT], 16);
 }
-
-
-void aes_set_key(uint8_t* key)
-{
-    memcpy(aes_buffer, key, 16);
-}
-
-void aes_set_iv(uint8_t* iv)
-{
-    memcpy(&aes_buffer[16], iv, 16);
-}
-
-static void aes_xpecb_encrypt_block(uint8_t* data, size_t size)
-{
-    do_aes();
-    memcpy(&aes_buffer[16], data, size);
-    do_xor(data, &aes_buffer[32], size);
-}
-
-void aes_xpecb_encrypt(uint8_t* data, size_t size)
-{
-    do_blocks(data, size, 16, aes_xpecb_encrypt_block);
-}
-
-static void aes_xpecb_decrypt_block(uint8_t* data, size_t size)
-{
-    do_aes();
-    do_xor(data, &aes_buffer[32], size);
-    memcpy(&aes_buffer[16], data, size);
-}
-
-void aes_xpecb_decrypt(uint8_t* data, size_t size)
-{
-    do_blocks(data, size, 16, aes_xpecb_decrypt_block);
-}
-
-// XPECB is actually CFB with inverted encrypt with decrypt process
-#define aes_cfb_encrypt aes_xpecb_decrypt
-#define aes_cfb_decrypt aes_xpecb_encrypt
 
 ```
