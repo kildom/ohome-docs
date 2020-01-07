@@ -125,3 +125,92 @@ AES key is located at the end of bootloader's flash page (end of flash). It is p
 
 ```
 
+```c++
+
+typedef void (*block_callback)(uint8_t* data, size_t size);
+
+uint8_t aes_buffer[16 * 3];
+
+static void do_aes()
+{
+    ECB->ECBDATAPTR = aes_buffer;
+    ECB->TASKS_STARTECB = 1;
+    while (!ECB->EVENTS_ENDECB);
+    ECB->EVENTS_ENDECB = 0;
+}
+
+
+static void do_blocks(uint8_t* data, size_t size, size_t block_size, block_callback callback)
+{
+    while (size > block_size)
+    {
+        callback(data, block_size);
+        size -= block_size;
+        data += block_size;
+    }
+    callback(data, size);
+}
+
+static void do_xor(uint8_t* data, uint8_t* source, size_t size)
+{
+    size_t i;
+    for (i = 0; i < size; i++)
+    {
+        data[i] ^= source[i];
+    }
+}
+
+static void aes_hash_block(uint8_t* data, size_t size)
+{
+    memcpy(&aes_buffer[0], data, size);
+    do_xor(&aes_buffer[16], &aes_buffer[32], 16);
+    do_aes();
+}
+
+void aes_hash_calc(uint8_t* data, size_t size, uint8_t* hash)
+{
+    memset(aes_buffer, 0, sizeof(aes_buffer));
+    do_blocks(data, size, 32, aes_hash_block);
+    memcpy(hash, &aes_buffer[32], 16);
+}
+
+
+void aes_set_key(uint8_t* key)
+{
+    memcpy(aes_buffer, key, 16);
+}
+
+void aes_set_iv(uint8_t* iv)
+{
+    memcpy(&aes_buffer[16], iv, 16);
+}
+
+static void aes_xpecb_encrypt_block(uint8_t* data, size_t size)
+{
+    do_aes();
+    memcpy(&aes_buffer[16], data, size);
+    do_xor(data, &aes_buffer[32], size);
+}
+
+void aes_xpecb_encrypt(uint8_t* data, size_t size)
+{
+    do_blocks(data, size, 16, aes_xpecb_encrypt_block);
+}
+
+static void aes_xpecb_decrypt_block(uint8_t* data, size_t size)
+{
+    do_aes();
+    do_xor(data, &aes_buffer[32], size);
+    memcpy(&aes_buffer[16], data, size);
+}
+
+void aes_xpecb_decrypt(uint8_t* data, size_t size)
+{
+    do_blocks(data, size, 16, aes_xpecb_decrypt_block);
+}
+
+// XPECB is actually CFB with inverted encrypt with decrypt process
+#define aes_cfb_encrypt aes_xpecb_decrypt
+#define aes_cfb_decrypt aes_xpecb_encrypt
+
+```
