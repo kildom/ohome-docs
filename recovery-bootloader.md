@@ -139,6 +139,12 @@ P[2] = AES1(T[1]) ^ T[2] ; T[2] = AES2(T[1]) ^ C[2]
 Euqlivement:
    AES_DCTF_ENCRYPT(key, iv, plain) = AES_CTF_DECRYPT(key ^ 1, iv, AES_CTF_ENCRYPT(key, iv, plain))
    AES_DCTF_DECRYPT(key, iv, cipher) = AES_CTF_DECRYPT(key, iv, AES_CTF_ENCRYPT(key ^ 1, iv, cipher))
+   
+OR for better security key ^ 1 can be replaced by some more advanced method, e.g.:
+ * key2 = AES(key1, key1)
+ * OR assume that connection key is 256-bit long with concatenated two keys:
+   * key1 = md5(pwd & devide unique address), key2 = md5("KEY2" & key1)
+   * OR key = sha256(pwd & devide unique address)
 
 AES key is located at the end of bootloader's flash page (end of flash). It is programmed the same time as entire bootloader.
 
