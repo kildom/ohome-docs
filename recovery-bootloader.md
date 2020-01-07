@@ -121,7 +121,40 @@ P[0] = AES(IV) ^ C[0]
 P[1] = AES(P[0]) ^ C[1]
 ...
 
+Or better AES_DCTF provides:
+      * full data security
+      * error propagation
+      * can use used instead of both AES_CFB and AES_PECB
+      * the same algorithm for encryption and decrition, but with inverted KEYs
+AES_DCTF:
+AES1(...) with KEY1 = KEY, AES2(...) with KEY2 = KEY ^ 1
+C[0] = AES2(IV) ^ T[0] ; T[0] = AES1(IV) ^ P[0]
+C[1] = AES2(T[0]) ^ T[1] ; T[1] = AES1(T[0]) ^ P[1]
+C[2] = AES2(T[1]) ^ T[2] ; T[2] = AES1(T[1]) ^ P[2]
+...
+P[0] = AES1(IV) ^ T[0] ; T[0] = AES2(IV) ^ C[0]
+P[1] = AES1(T[0]) ^ T[1] ; T[1] = AES2(T[0]) ^ C[1]
+P[2] = AES1(T[1]) ^ T[2] ; T[2] = AES2(T[1]) ^ C[2]
+
+Euqlivement:
+   AES_DCTF_ENCRYPT(key, iv, plain) = AES_CTF_DECRYPT(key ^ 1, iv, AES_CTF_ENCRYPT(key, iv, plain))
+   AES_DCTF_DECRYPT(key, iv, cipher) = AES_CTF_DECRYPT(key, iv, AES_CTF_ENCRYPT(key ^ 1, iv, cipher))
+
 AES key is located at the end of bootloader's flash page (end of flash). It is programmed the same time as entire bootloader.
+
+```
+
+```c++
+
+void aes_dctf_block(uint8_t* data, size_t size)
+{
+    do_aes(buffer1); // buffer1 contains key1=key, plain=iv
+    do_xor(data, &buffer1[32]);
+    memcpy(&buffer1[16], data, 16);
+    do_aes(buffer2); // buffer2 contains key2=key^1, plain=iv
+    do_xor(data, &buffer2[32]);
+    memcpy(&buffer2[16], &buffer1[16], 16);
+}
 
 ```
 
