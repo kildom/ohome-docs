@@ -152,10 +152,15 @@ AES key is located at the end of bootloader's flash page (end of flash). It is p
 
 ```c++
 
+#include <stdint.h>
+#include <stdlib.h>
+#include <string.h>
+
+// In header file
 #define AES_DCTF_ENCRYPT 0
 #define AES_DCTF_DECRYPT 48
 
-
+// In C file
 #define KEY 0
 #define PT 16
 #define CT 32
@@ -175,30 +180,15 @@ AES key is located at the end of bootloader's flash page (end of flash). It is p
 
 static uint8_t aes_buffer[BUFFER_BYTES];
 
-static size_t first_key_index; // encryption: first_key_index = KEY1
-                               // decryption: first_key_index = KEY2
-
-
 static void do_aes(uint8_t* data)
 {
-    ECB->ECBDATAPTR = data;
+    ECB->ECBDATAPTR = (uint32_t)data;
     ECB->TASKS_STARTECB = 1;
     while (!ECB->EVENTS_ENDECB);
     ECB->EVENTS_ENDECB = 0;
 }
 
-static void do_blocks(uint8_t* data, size_t size, size_t block_size, block_callback callback)
-{
-    while (size > block_size)
-    {
-        callback(data, block_size);
-        size -= block_size;
-        data += block_size;
-    }
-    callback(data, size);
-}
-
-static void do_xor(uint8_t* data, uint8_t* source, size_t size)
+static void do_xor(uint8_t* data, const uint8_t* source, size_t size)
 {
     size_t i;
     for (i = 0; i < size; i++)
@@ -207,10 +197,10 @@ static void do_xor(uint8_t* data, uint8_t* source, size_t size)
     }
 }
 
-static void aes_dctf_block(uint8_t* data, size_t size)
+static void aes_dctf_block(uint8_t* data, size_t size, uint32_t mode)
 {
-    uint8_t* buffer1 = &aes_buffer[KEY1 + first_key_index];
-    uint8_t* buffer2 = &aes_buffer[KEY2 - first_key_index];
+    uint8_t* buffer1 = &aes_buffer[KEY1 + mode];
+    uint8_t* buffer2 = &aes_buffer[KEY2 - mode];
     do_aes(buffer1); // buffer1 contains key=first_key, plain=iv
     do_xor(data, &buffer1[CT], size);
     memcpy(&buffer1[PT], data, size);
@@ -219,32 +209,42 @@ static void aes_dctf_block(uint8_t* data, size_t size)
     memcpy(&buffer2[PT], &buffer1[PT], size);
 }
 
-void aes_dctf_key(uint8_t* key)
+void aes_dctf_key(const uint8_t* key)
 {
     memcpy(&aes_buffer[KEY1], key, 16);
     memcpy(&aes_buffer[KEY2], &key[16], 16);
 }
 
-void aes_dctf_crypt(uint8_t* data, size_t size, uint32_t mode, uint8_t* iv)
+void aes_dctf(uint8_t* data, size_t size, uint32_t mode, const uint8_t* iv)
 {
-    first_key_index = mode;
     memcpy(&aes_buffer[PT1], iv, 16);
     memcpy(&aes_buffer[PT2], iv, 16);
-    do_blocks(data, size, 16, aes_dctf_block);
+    while (size > 0)
+    {
+        size_t this_size = (size > 16) ? 16 : size;
+        aes_dctf_block(data, this_size, mode);
+        size -= this_size;
+        data += this_size;
+    }
 }
 
-static void aes_hash_block(uint8_t* data, size_t size)
+static void aes_hash_block(const uint8_t* data, size_t size)
 {
     memcpy(&aes_buffer[HASH_IN1], data, size);
     do_xor(&aes_buffer[HASH_IN2], &aes_buffer[HASH_OUT], 16);
     do_aes(&aes_buffer[HASH_IN1]);
 }
 
-void aes_hash_calc(uint8_t* data, size_t size, uint8_t* hash)
+void aes_hash(const uint8_t* data, size_t size, uint8_t* hash)
 {
-    memset(&aes_buffer[HASH_IN1], 0, 32);
-    do_blocks(data, size, 32, aes_hash_block);
+    memset(&aes_buffer[HASH_IN1], 0, 48);
+    while (size > 0)
+    {
+        size_t this_size = (size > 32) ? 32 : size;
+        aes_hash_block(data, this_size);
+        size -= this_size;
+        data += this_size;
+    }
     memcpy(hash, &aes_buffer[HASH_OUT], 16);
 }
-
 ```
