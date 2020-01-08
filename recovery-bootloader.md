@@ -150,6 +150,8 @@ AES key is located at the end of bootloader's flash page (end of flash). It is p
 
 ```
 
+>> Warning!!! Wrong name should be DCFB instead of DCTF
+
 ```c++
 
 #include <stdint.h>
