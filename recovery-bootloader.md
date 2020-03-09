@@ -153,6 +153,9 @@ AES key is located at the end of bootloader's flash page (end of flash). It is p
 [![DCFB](img/DCFB.svg)](https://kildom.github.io/drawio/#img%2FDCFB.drawio)<br/>
 **Double Cipher Feedback (DCFB)** encryption and decryption.
 
+[![SAHF](img/SAHF.svg)](https://kildom.github.io/drawio/#img%2FSAHF.drawio)<br/>
+**Simple AES-based Hash Function (SAHF)**.
+
 >> Warning!!! Wrong name should be DCFB instead of DCTF
 
 ```c++
