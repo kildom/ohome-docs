@@ -150,6 +150,9 @@ AES key is located at the end of bootloader's flash page (end of flash). It is p
 
 ```
 
+[![DCFB](img/DCFB.svg)](https://kildom.github.io/drawio/#img%2FDCFB.drawio)<br/>
+**Double Cipher Feedback (DCFB)** encryption and decryption.
+
 >> Warning!!! Wrong name should be DCFB instead of DCTF
 
 ```c++
