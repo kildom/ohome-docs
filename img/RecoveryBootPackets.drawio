@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2020-05-14T09:26:16.191Z" agent="5.0 (X11)" etag="xj2L_eN-vcTulKtb2CAo" compressed="false" version="13.1.1" type="github">
+<mxfile host="app.diagrams.net" modified="2020-05-14T10:03:54.749Z" agent="5.0 (X11)" etag="Nto5r0xGoktqurf2aYfF" compressed="false" version="13.1.1" type="github">
   <diagram id="t1ZCpZpJYKazgtFZVCPd" name="Page-1">
     <mxGraphModel dx="1422" dy="863" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
@@ -224,19 +224,16 @@
           <mxGeometry x="940" y="640" width="10" height="40" as="geometry" />
         </mxCell>
         <mxCell id="waBOEk4IKbCV2aVjHFDW-35" value="flags" style="rounded=0;whiteSpace=wrap;html=1;horizontal=0;fontFamily=sans-serif;" parent="1" vertex="1">
-          <mxGeometry x="970" y="660" width="20" height="40" as="geometry" />
+          <mxGeometry x="950" y="660" width="20" height="40" as="geometry" />
         </mxCell>
         <mxCell id="waBOEk4IKbCV2aVjHFDW-36" value="status *" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=sans-serif;" parent="1" vertex="1">
-          <mxGeometry x="990" y="660" width="40" height="40" as="geometry" />
+          <mxGeometry x="970" y="660" width="40" height="40" as="geometry" />
         </mxCell>
         <mxCell id="waBOEk4IKbCV2aVjHFDW-37" value="response" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=sans-serif;" parent="1" vertex="1">
           <mxGeometry x="850" y="620" width="180" height="20" as="geometry" />
         </mxCell>
-        <mxCell id="waBOEk4IKbCV2aVjHFDW-38" value="lo&lt;br&gt;cnt" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=sans-serif;fillColor=#CCE5FF;" parent="1" vertex="1">
-          <mxGeometry x="950" y="640" width="20" height="40" as="geometry" />
-        </mxCell>
         <mxCell id="waBOEk4IKbCV2aVjHFDW-39" value="encrypted (conn_id &amp;amp; cnt)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#CCE5FF;fontFamily=sans-serif;" parent="1" vertex="1">
-          <mxGeometry x="970" y="640" width="180" height="20" as="geometry" />
+          <mxGeometry x="950" y="640" width="180" height="20" as="geometry" />
         </mxCell>
         <mxCell id="waBOEk4IKbCV2aVjHFDW-40" value="zeros" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=sans-serif;fillColor=#CCE5FF;" parent="1" vertex="1">
           <mxGeometry x="1030" y="360" width="120" height="40" as="geometry" />
@@ -248,7 +245,7 @@
           <mxGeometry x="1400" y="560" width="120" height="40" as="geometry" />
         </mxCell>
         <mxCell id="waBOEk4IKbCV2aVjHFDW-43" value="zeros" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=sans-serif;fillColor=#CCE5FF;" parent="1" vertex="1">
-          <mxGeometry x="1030" y="660" width="120" height="40" as="geometry" />
+          <mxGeometry x="1010" y="660" width="120" height="40" as="geometry" />
         </mxCell>
         <mxCell id="waBOEk4IKbCV2aVjHFDW-45" value="device name *" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=sans-serif;" parent="1" vertex="1">
           <mxGeometry x="1030" y="240" width="140" height="40" as="geometry" />
@@ -374,7 +371,7 @@
           <mxGeometry x="1520" y="540" width="30" height="40" as="geometry" />
         </mxCell>
         <mxCell id="4k450kukm1qvfWlfrWDw-48" value="crc" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=sans-serif;fillColor=#E6E6E6;" parent="1" vertex="1">
-          <mxGeometry x="1150" y="640" width="30" height="40" as="geometry" />
+          <mxGeometry x="1130" y="640" width="30" height="40" as="geometry" />
         </mxCell>
         <mxCell id="4k450kukm1qvfWlfrWDw-50" value="Password:" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=sans-serif;" parent="1" vertex="1">
           <mxGeometry x="200" y="1040" width="90" height="20" as="geometry" />
@@ -619,7 +616,7 @@
         <mxCell id="44p-R-ChuCsgnd37TJSl-57" value="Modify bootloader" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;fontFamily=sans-serif;align=left;" vertex="1" parent="1">
           <mxGeometry x="720" y="970" width="160" height="20" as="geometry" />
         </mxCell>
-        <mxCell id="44p-R-ChuCsgnd37TJSl-58" value="&lt;h1&gt;Programmer commands&lt;br&gt;&lt;/h1&gt;&lt;p&gt;* start discovery: encryption key&lt;/p&gt;&lt;p&gt;* stop discover&lt;/p&gt;&lt;p&gt;* get devices&lt;/p&gt;&lt;p&gt;--&amp;gt; devices[]: id, name, status, conn_id*, cnt*&lt;br&gt;&lt;/p&gt;&lt;p&gt;* send packet: packet, expect response, wait timeout*&lt;/p&gt;&lt;p&gt;--&amp;gt; status, response packet*&lt;br&gt;&lt;/p&gt;" style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;" vertex="1" parent="1">
+        <mxCell id="44p-R-ChuCsgnd37TJSl-58" value="&lt;h1&gt;Programmer commands&lt;br&gt;&lt;/h1&gt;&lt;p&gt;* start discovery: encryption key&lt;/p&gt;&lt;p&gt;* stop discover&lt;/p&gt;&lt;p&gt;* get devices&lt;/p&gt;&lt;p&gt;--&amp;gt; devices[]: id, name, status, conn_id*, cnt*&lt;br&gt;&lt;/p&gt;&lt;p&gt;* send packet: packet, expect response, response iv*, wait timeout*&lt;/p&gt;&lt;p&gt;--&amp;gt; (if response is expected) status, response packet*&lt;br&gt;&lt;/p&gt;" style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;" vertex="1" parent="1">
           <mxGeometry x="1275" y="1110" width="495" height="220" as="geometry" />
         </mxCell>
       </root>
