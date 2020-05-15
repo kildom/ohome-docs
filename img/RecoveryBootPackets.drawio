@@ -1,13 +1,13 @@
-<mxfile host="app.diagrams.net" modified="2020-05-14T11:10:39.365Z" agent="5.0 (X11)" etag="trAjsfUPouxqTJqqf4GR" compressed="false" version="13.1.1" type="github">
+<mxfile host="app.diagrams.net" modified="2020-05-15T05:20:36.312Z" agent="5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.138 Safari/537.36" etag="fcbhqrf4qiGJgf4vqF6x" compressed="false" version="13.1.1" type="github">
   <diagram id="t1ZCpZpJYKazgtFZVCPd" name="Page-1">
-    <mxGraphModel dx="2031" dy="1233" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="868" dy="492" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
         <mxCell id="4k450kukm1qvfWlfrWDw-155" value="" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#E6E6E6;fontFamily=sans-serif;fontColor=#B3B3B3;align=left;" parent="1" vertex="1">
           <mxGeometry x="180" y="990" width="470" height="440" as="geometry" />
         </mxCell>
-        <mxCell id="44p-R-ChuCsgnd37TJSl-35" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;fontFamily=sans-serif;align=left;" vertex="1" parent="1">
+        <mxCell id="44p-R-ChuCsgnd37TJSl-35" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;fontFamily=sans-serif;align=left;" parent="1" vertex="1">
           <mxGeometry x="610" y="1010" width="20" height="20" as="geometry" />
         </mxCell>
         <mxCell id="4k450kukm1qvfWlfrWDw-159" value="" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#E6E6E6;fontFamily=sans-serif;fontColor=#B3B3B3;align=left;" parent="1" vertex="1">
@@ -212,7 +212,7 @@
           <mxGeometry x="970" y="540" width="550" height="20" as="geometry" />
         </mxCell>
         <mxCell id="waBOEk4IKbCV2aVjHFDW-31" value="block *" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=sans-serif;" parent="1" vertex="1">
-          <mxGeometry x="1190" y="560" width="210" height="40" as="geometry" />
+          <mxGeometry x="1270" y="560" width="130" height="40" as="geometry" />
         </mxCell>
         <mxCell id="waBOEk4IKbCV2aVjHFDW-32" value="page&lt;br&gt;range*" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=sans-serif;" parent="1" vertex="1">
           <mxGeometry x="1150" y="560" width="40" height="40" as="geometry" />
@@ -517,122 +517,125 @@
         <mxCell id="4k450kukm1qvfWlfrWDw-156" value="&amp;nbsp;&amp;nbsp;&amp;nbsp; Upload application" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#7EA6E0;fontFamily=sans-serif;fontColor=#000000;align=left;" parent="1" vertex="1">
           <mxGeometry x="180" y="940" width="470" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="44p-R-ChuCsgnd37TJSl-1" value="" style="dashed=0;labelPosition=right;align=left;shape=mxgraph.gmdl.checkbox;strokeColor=none;fillColor=#009587;strokeWidth=2;aspect=fixed;fontFamily=sans-serif;fontColor=#CCCC00;" vertex="1" parent="1">
+        <mxCell id="44p-R-ChuCsgnd37TJSl-1" value="" style="dashed=0;labelPosition=right;align=left;shape=mxgraph.gmdl.checkbox;strokeColor=none;fillColor=#009587;strokeWidth=2;aspect=fixed;fontFamily=sans-serif;fontColor=#CCCC00;" parent="1" vertex="1">
           <mxGeometry x="290" y="1100" width="20" height="20" as="geometry" />
         </mxCell>
-        <mxCell id="44p-R-ChuCsgnd37TJSl-2" value="Erase all pages" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=sans-serif;" vertex="1" parent="1">
+        <mxCell id="44p-R-ChuCsgnd37TJSl-2" value="Erase all pages" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=sans-serif;" parent="1" vertex="1">
           <mxGeometry x="320" y="1100" width="320" height="20" as="geometry" />
         </mxCell>
-        <mxCell id="44p-R-ChuCsgnd37TJSl-5" value="&lt;h1&gt;TODO&lt;/h1&gt;&lt;p&gt;* functionality to check hash before flashing&lt;/p&gt;&lt;p&gt;* do not start app if it is empty (i.e. reset_vect == 0 or 0xFFFFFFFF)&lt;/p&gt;&lt;p&gt;* request/response packets to switch radio channel&lt;/p&gt;&lt;p&gt;* keep alive packet (flags==0) to prevent starting app after some timeout&lt;br&gt;&lt;/p&gt;" style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;" vertex="1" parent="1">
+        <mxCell id="44p-R-ChuCsgnd37TJSl-5" value="&lt;h1&gt;TODO&lt;/h1&gt;&lt;p&gt;* functionality to check hash before flashing&lt;/p&gt;&lt;p&gt;* do not start app if it is empty (i.e. reset_vect == 0 or 0xFFFFFFFF)&lt;/p&gt;&lt;p&gt;* request/response packets to switch radio channel&lt;/p&gt;&lt;p&gt;* keep alive packet (flags==0) to prevent starting app after some timeout&lt;br&gt;&lt;/p&gt;" style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;" parent="1" vertex="1">
           <mxGeometry x="1275" y="960" width="495" height="150" as="geometry" />
         </mxCell>
-        <mxCell id="44p-R-ChuCsgnd37TJSl-8" value="" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#E6E6E6;fontFamily=sans-serif;fontColor=#B3B3B3;align=left;" vertex="1" parent="1">
+        <mxCell id="44p-R-ChuCsgnd37TJSl-8" value="" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#E6E6E6;fontFamily=sans-serif;fontColor=#B3B3B3;align=left;" parent="1" vertex="1">
           <mxGeometry x="720" y="1230" width="420" height="120" as="geometry" />
         </mxCell>
-        <mxCell id="44p-R-ChuCsgnd37TJSl-9" value="&amp;nbsp;&amp;nbsp;&amp;nbsp; Settings" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#7EA6E0;fontFamily=sans-serif;fontColor=#000000;align=left;" vertex="1" parent="1">
+        <mxCell id="44p-R-ChuCsgnd37TJSl-9" value="&amp;nbsp;&amp;nbsp;&amp;nbsp; Settings" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#7EA6E0;fontFamily=sans-serif;fontColor=#000000;align=left;" parent="1" vertex="1">
           <mxGeometry x="720" y="1200" width="420" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="44p-R-ChuCsgnd37TJSl-11" value="Wait timeout:" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=sans-serif;" vertex="1" parent="1">
+        <mxCell id="44p-R-ChuCsgnd37TJSl-11" value="Wait timeout:" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=sans-serif;" parent="1" vertex="1">
           <mxGeometry x="770" y="1250" width="110" height="20" as="geometry" />
         </mxCell>
-        <mxCell id="44p-R-ChuCsgnd37TJSl-12" value="" style="dashed=0;labelPosition=right;align=left;shape=mxgraph.gmdl.checkbox;strokeColor=none;fillColor=#009587;strokeWidth=2;aspect=fixed;fontFamily=sans-serif;fontColor=#CCCC00;" vertex="1" parent="1">
+        <mxCell id="44p-R-ChuCsgnd37TJSl-12" value="" style="dashed=0;labelPosition=right;align=left;shape=mxgraph.gmdl.checkbox;strokeColor=none;fillColor=#009587;strokeWidth=2;aspect=fixed;fontFamily=sans-serif;fontColor=#CCCC00;" parent="1" vertex="1">
           <mxGeometry x="740" y="1250" width="20" height="20" as="geometry" />
         </mxCell>
-        <mxCell id="44p-R-ChuCsgnd37TJSl-13" value="15" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;fontFamily=sans-serif;align=left;" vertex="1" parent="1">
+        <mxCell id="44p-R-ChuCsgnd37TJSl-13" value="15" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;fontFamily=sans-serif;align=left;" parent="1" vertex="1">
           <mxGeometry x="890" y="1250" width="200" height="20" as="geometry" />
         </mxCell>
-        <mxCell id="44p-R-ChuCsgnd37TJSl-14" value="sec." style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=sans-serif;" vertex="1" parent="1">
+        <mxCell id="44p-R-ChuCsgnd37TJSl-14" value="sec." style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=sans-serif;" parent="1" vertex="1">
           <mxGeometry x="1100" y="1250" width="70" height="20" as="geometry" />
         </mxCell>
-        <mxCell id="44p-R-ChuCsgnd37TJSl-15" value="Discovery timeout:" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=sans-serif;" vertex="1" parent="1">
+        <mxCell id="44p-R-ChuCsgnd37TJSl-15" value="Discovery timeout:" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=sans-serif;" parent="1" vertex="1">
           <mxGeometry x="770" y="1280" width="130" height="20" as="geometry" />
         </mxCell>
-        <mxCell id="44p-R-ChuCsgnd37TJSl-17" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E6E6E6;fontFamily=sans-serif;align=left;" vertex="1" parent="1">
+        <mxCell id="44p-R-ChuCsgnd37TJSl-17" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E6E6E6;fontFamily=sans-serif;align=left;" parent="1" vertex="1">
           <mxGeometry x="890" y="1280" width="200" height="20" as="geometry" />
         </mxCell>
-        <mxCell id="44p-R-ChuCsgnd37TJSl-18" value="sec." style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=sans-serif;" vertex="1" parent="1">
+        <mxCell id="44p-R-ChuCsgnd37TJSl-18" value="sec." style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=sans-serif;" parent="1" vertex="1">
           <mxGeometry x="1100" y="1280" width="70" height="20" as="geometry" />
         </mxCell>
-        <mxCell id="44p-R-ChuCsgnd37TJSl-19" value="" style="dashed=0;labelPosition=right;align=left;shape=mxgraph.gmdl.checkbox;strokeColor=#666666;fillColor=none;strokeWidth=2;aspect=fixed;fontFamily=sans-serif;fontColor=#CCCC00;" vertex="1" parent="1">
+        <mxCell id="44p-R-ChuCsgnd37TJSl-19" value="" style="dashed=0;labelPosition=right;align=left;shape=mxgraph.gmdl.checkbox;strokeColor=#666666;fillColor=none;strokeWidth=2;aspect=fixed;fontFamily=sans-serif;fontColor=#CCCC00;" parent="1" vertex="1">
           <mxGeometry x="740" y="1280" width="20" height="20" as="geometry" />
         </mxCell>
-        <mxCell id="44p-R-ChuCsgnd37TJSl-20" value="Show log level:" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=sans-serif;" vertex="1" parent="1">
+        <mxCell id="44p-R-ChuCsgnd37TJSl-20" value="Show log level:" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=sans-serif;" parent="1" vertex="1">
           <mxGeometry x="770" y="1310" width="110" height="20" as="geometry" />
         </mxCell>
-        <mxCell id="44p-R-ChuCsgnd37TJSl-22" value="DEBUG" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;fontFamily=sans-serif;align=left;" vertex="1" parent="1">
+        <mxCell id="44p-R-ChuCsgnd37TJSl-22" value="DEBUG" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;fontFamily=sans-serif;align=left;" parent="1" vertex="1">
           <mxGeometry x="890" y="1310" width="180" height="20" as="geometry" />
         </mxCell>
-        <mxCell id="44p-R-ChuCsgnd37TJSl-23" value="" style="dashed=0;labelPosition=right;align=left;shape=mxgraph.gmdl.checkbox;strokeColor=none;fillColor=#009587;strokeWidth=2;aspect=fixed;fontFamily=sans-serif;fontColor=#CCCC00;" vertex="1" parent="1">
+        <mxCell id="44p-R-ChuCsgnd37TJSl-23" value="" style="dashed=0;labelPosition=right;align=left;shape=mxgraph.gmdl.checkbox;strokeColor=none;fillColor=#009587;strokeWidth=2;aspect=fixed;fontFamily=sans-serif;fontColor=#CCCC00;" parent="1" vertex="1">
           <mxGeometry x="740" y="1310" width="20" height="20" as="geometry" />
         </mxCell>
-        <mxCell id="44p-R-ChuCsgnd37TJSl-26" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;fontFamily=sans-serif;align=left;" vertex="1" parent="1">
+        <mxCell id="44p-R-ChuCsgnd37TJSl-26" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;fontFamily=sans-serif;align=left;" parent="1" vertex="1">
           <mxGeometry x="1070" y="1310" width="20" height="20" as="geometry" />
         </mxCell>
-        <mxCell id="44p-R-ChuCsgnd37TJSl-25" value="" style="verticalLabelPosition=bottom;verticalAlign=top;html=1;shape=mxgraph.basic.acute_triangle;dx=0.5;fillColor=#000000;strokeColor=none;direction=west;" vertex="1" parent="1">
+        <mxCell id="44p-R-ChuCsgnd37TJSl-25" value="" style="verticalLabelPosition=bottom;verticalAlign=top;html=1;shape=mxgraph.basic.acute_triangle;dx=0.5;fillColor=#000000;strokeColor=none;direction=west;" parent="1" vertex="1">
           <mxGeometry x="1075" y="1315" width="10" height="10" as="geometry" />
         </mxCell>
-        <mxCell id="44p-R-ChuCsgnd37TJSl-28" value="Settings" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;fontFamily=sans-serif;align=left;" vertex="1" parent="1">
+        <mxCell id="44p-R-ChuCsgnd37TJSl-28" value="Settings" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;fontFamily=sans-serif;align=left;" parent="1" vertex="1">
           <mxGeometry x="20" y="1070" width="160" height="20" as="geometry" />
         </mxCell>
-        <mxCell id="44p-R-ChuCsgnd37TJSl-29" value="&lt;div style=&quot;font-size: 10px&quot;&gt;&lt;font style=&quot;font-size: 10px&quot;&gt;12:33:11 INF: Connected to programmer on &#39;COM23:&#39;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px&quot;&gt;&lt;font style=&quot;font-size: 10px&quot;&gt;12:34:56 INF: Starting discovery&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px&quot;&gt;&lt;font style=&quot;font-size: 10px&quot;&gt;12:35:55 INF: Caught device &#39;Sensor1 [23:23:44:23:43:FE]&#39;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px&quot;&gt;&lt;font style=&quot;font-size: 10px&quot;&gt;12:35:55 INF: Password valid&lt;br style=&quot;font-size: 10px&quot;&gt;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px&quot;&gt;&lt;font style=&quot;font-size: 10px&quot;&gt;12:35:55 INF: Caught device &#39;Sensor2 [23:44:68:22:43:99]&#39;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px&quot;&gt;&lt;div style=&quot;font-size: 10px&quot;&gt;&lt;font style=&quot;font-size: 10px&quot; color=&quot;#6B5200&quot;&gt;12:35:55 WRN: Password invalid&lt;/font&gt;&lt;font style=&quot;font-size: 10px&quot;&gt;&lt;br style=&quot;font-size: 10px&quot;&gt;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px&quot;&gt;&lt;font style=&quot;font-size: 10px&quot;&gt;12:36:01 INF: Starting upload&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px&quot;&gt;&lt;font style=&quot;font-size: 10px&quot;&gt;12:36:01 INF: Application hash does not match&lt;/font&gt;&lt;/div&gt;&lt;font style=&quot;font-size: 10px&quot;&gt;12:36:01 DBG: Erasing pages 0-3...&lt;br style=&quot;font-size: 10px&quot;&gt;&lt;/font&gt;&lt;div style=&quot;font-size: 10px&quot;&gt;&lt;font style=&quot;font-size: 10px&quot;&gt;12:36:01 DBG: Erase done&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px&quot;&gt;&lt;font style=&quot;font-size: 10px&quot;&gt;12:36:01 DBG: Sending blocks 1-31 of 3441...&lt;br style=&quot;font-size: 10px&quot;&gt;&lt;/font&gt;&lt;div style=&quot;font-size: 10px&quot;&gt;&lt;font style=&quot;font-size: 10px&quot;&gt;12:36:01 DBG: Send done&lt;br style=&quot;font-size: 10px&quot;&gt;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px&quot;&gt;&lt;font style=&quot;font-size: 10px&quot;&gt;12:36:01 DBG: Getting status...&lt;br style=&quot;font-size: 10px&quot;&gt;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px&quot;&gt;&lt;font style=&quot;font-size: 10px&quot;&gt;12:36:01 DBG: Blocks lost 4/31 13% &#39;-------X---------XXX-----------&#39;&lt;br style=&quot;font-size: 10px&quot;&gt;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px&quot;&gt;&lt;font style=&quot;font-size: 10px&quot;&gt;12:36:01 DBG: Resending blocks&lt;br&gt;&lt;/font&gt;&lt;/div&gt;&lt;/div&gt;&lt;font style=&quot;font-size: 10px&quot;&gt;12:36:01 DBG: Send done&lt;br style=&quot;font-size: 10px&quot;&gt;&lt;/font&gt;&lt;div style=&quot;font-size: 10px&quot;&gt;&lt;font style=&quot;font-size: 10px&quot;&gt;12:36:01 DBG: Getting status...&lt;br style=&quot;font-size: 10px&quot;&gt;&lt;/font&gt;&lt;/div&gt;&lt;font style=&quot;font-size: 10px&quot;&gt;&lt;/font&gt;&lt;div style=&quot;font-size: 10px&quot;&gt;&lt;div style=&quot;font-size: 10px&quot;&gt;&lt;font style=&quot;font-size: 10px&quot;&gt;12:36:01 DBG: No blocks lost&lt;br style=&quot;font-size: 10px&quot;&gt;&lt;/font&gt;&lt;div style=&quot;font-size: 10px&quot;&gt;&lt;font style=&quot;font-size: 10px&quot;&gt;12:36:01 DBG: Sending blocks 32-63 of 3441...&lt;br style=&quot;font-size: 10px&quot;&gt;&lt;/font&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px&quot;&gt;&lt;font style=&quot;font-size: 10px&quot;&gt;&lt;br style=&quot;font-size: 10px&quot;&gt;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px&quot;&gt;&lt;font style=&quot;font-size: 10px&quot;&gt;&lt;br style=&quot;font-size: 10px&quot;&gt;&lt;/font&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#FFFFFF;fontFamily=monospace;fontColor=#000000;align=left;verticalAlign=top;fontSize=10;" vertex="1" parent="1">
+        <mxCell id="44p-R-ChuCsgnd37TJSl-29" value="&lt;div style=&quot;font-size: 10px&quot;&gt;&lt;font style=&quot;font-size: 10px&quot;&gt;12:33:11 INF: Connected to programmer on &#39;COM23:&#39;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px&quot;&gt;&lt;font style=&quot;font-size: 10px&quot;&gt;12:34:56 INF: Starting discovery&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px&quot;&gt;&lt;font style=&quot;font-size: 10px&quot;&gt;12:35:55 INF: Caught device &#39;Sensor1 [23:23:44:23:43:FE]&#39;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px&quot;&gt;&lt;font style=&quot;font-size: 10px&quot;&gt;12:35:55 INF: Password valid&lt;br style=&quot;font-size: 10px&quot;&gt;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px&quot;&gt;&lt;font style=&quot;font-size: 10px&quot;&gt;12:35:55 INF: Caught device &#39;Sensor2 [23:44:68:22:43:99]&#39;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px&quot;&gt;&lt;div style=&quot;font-size: 10px&quot;&gt;&lt;font style=&quot;font-size: 10px&quot; color=&quot;#6B5200&quot;&gt;12:35:55 WRN: Password invalid&lt;/font&gt;&lt;font style=&quot;font-size: 10px&quot;&gt;&lt;br style=&quot;font-size: 10px&quot;&gt;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px&quot;&gt;&lt;font style=&quot;font-size: 10px&quot;&gt;12:36:01 INF: Starting upload&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px&quot;&gt;&lt;font style=&quot;font-size: 10px&quot;&gt;12:36:01 INF: Application hash does not match&lt;/font&gt;&lt;/div&gt;&lt;font style=&quot;font-size: 10px&quot;&gt;12:36:01 DBG: Erasing pages 0-3...&lt;br style=&quot;font-size: 10px&quot;&gt;&lt;/font&gt;&lt;div style=&quot;font-size: 10px&quot;&gt;&lt;font style=&quot;font-size: 10px&quot;&gt;12:36:01 DBG: Erase done&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px&quot;&gt;&lt;font style=&quot;font-size: 10px&quot;&gt;12:36:01 DBG: Sending blocks 1-31 of 3441...&lt;br style=&quot;font-size: 10px&quot;&gt;&lt;/font&gt;&lt;div style=&quot;font-size: 10px&quot;&gt;&lt;font style=&quot;font-size: 10px&quot;&gt;12:36:01 DBG: Send done&lt;br style=&quot;font-size: 10px&quot;&gt;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px&quot;&gt;&lt;font style=&quot;font-size: 10px&quot;&gt;12:36:01 DBG: Getting status...&lt;br style=&quot;font-size: 10px&quot;&gt;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px&quot;&gt;&lt;font style=&quot;font-size: 10px&quot;&gt;12:36:01 DBG: Blocks lost 4/31 13% &#39;-------X---------XXX-----------&#39;&lt;br style=&quot;font-size: 10px&quot;&gt;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px&quot;&gt;&lt;font style=&quot;font-size: 10px&quot;&gt;12:36:01 DBG: Resending blocks&lt;br&gt;&lt;/font&gt;&lt;/div&gt;&lt;/div&gt;&lt;font style=&quot;font-size: 10px&quot;&gt;12:36:01 DBG: Send done&lt;br style=&quot;font-size: 10px&quot;&gt;&lt;/font&gt;&lt;div style=&quot;font-size: 10px&quot;&gt;&lt;font style=&quot;font-size: 10px&quot;&gt;12:36:01 DBG: Getting status...&lt;br style=&quot;font-size: 10px&quot;&gt;&lt;/font&gt;&lt;/div&gt;&lt;font style=&quot;font-size: 10px&quot;&gt;&lt;/font&gt;&lt;div style=&quot;font-size: 10px&quot;&gt;&lt;div style=&quot;font-size: 10px&quot;&gt;&lt;font style=&quot;font-size: 10px&quot;&gt;12:36:01 DBG: No blocks lost&lt;br style=&quot;font-size: 10px&quot;&gt;&lt;/font&gt;&lt;div style=&quot;font-size: 10px&quot;&gt;&lt;font style=&quot;font-size: 10px&quot;&gt;12:36:01 DBG: Sending blocks 32-63 of 3441...&lt;br style=&quot;font-size: 10px&quot;&gt;&lt;/font&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px&quot;&gt;&lt;font style=&quot;font-size: 10px&quot;&gt;&lt;br style=&quot;font-size: 10px&quot;&gt;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px&quot;&gt;&lt;font style=&quot;font-size: 10px&quot;&gt;&lt;br style=&quot;font-size: 10px&quot;&gt;&lt;/font&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#FFFFFF;fontFamily=monospace;fontColor=#000000;align=left;verticalAlign=top;fontSize=10;" parent="1" vertex="1">
           <mxGeometry x="180" y="1430" width="470" height="240" as="geometry" />
         </mxCell>
-        <mxCell id="44p-R-ChuCsgnd37TJSl-32" value="Programmer:" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=sans-serif;" vertex="1" parent="1">
+        <mxCell id="44p-R-ChuCsgnd37TJSl-32" value="Programmer:" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=sans-serif;" parent="1" vertex="1">
           <mxGeometry x="200" y="1010" width="80" height="20" as="geometry" />
         </mxCell>
-        <mxCell id="44p-R-ChuCsgnd37TJSl-33" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;fontFamily=sans-serif;align=left;" vertex="1" parent="1">
+        <mxCell id="44p-R-ChuCsgnd37TJSl-33" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;fontFamily=sans-serif;align=left;" parent="1" vertex="1">
           <mxGeometry x="290" y="1010" width="320" height="20" as="geometry" />
         </mxCell>
-        <mxCell id="44p-R-ChuCsgnd37TJSl-34" value="" style="verticalLabelPosition=bottom;verticalAlign=top;html=1;shape=mxgraph.basic.acute_triangle;dx=0.5;fillColor=#000000;strokeColor=none;direction=west;" vertex="1" parent="1">
+        <mxCell id="44p-R-ChuCsgnd37TJSl-34" value="" style="verticalLabelPosition=bottom;verticalAlign=top;html=1;shape=mxgraph.basic.acute_triangle;dx=0.5;fillColor=#000000;strokeColor=none;direction=west;" parent="1" vertex="1">
           <mxGeometry x="615" y="1015" width="10" height="10" as="geometry" />
         </mxCell>
-        <mxCell id="44p-R-ChuCsgnd37TJSl-39" value="Autodetect port" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;fontFamily=sans-serif;align=left;" vertex="1" parent="1">
+        <mxCell id="44p-R-ChuCsgnd37TJSl-39" value="Autodetect port" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;fontFamily=sans-serif;align=left;" parent="1" vertex="1">
           <mxGeometry x="20" y="990" width="160" height="20" as="geometry" />
         </mxCell>
-        <mxCell id="44p-R-ChuCsgnd37TJSl-43" value="Modify bootloader" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;fontFamily=sans-serif;align=left;" vertex="1" parent="1">
+        <mxCell id="44p-R-ChuCsgnd37TJSl-43" value="Modify bootloader" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;fontFamily=sans-serif;align=left;" parent="1" vertex="1">
           <mxGeometry x="20" y="1030" width="160" height="20" as="geometry" />
         </mxCell>
-        <mxCell id="44p-R-ChuCsgnd37TJSl-44" value="Flash programmer" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;fontFamily=sans-serif;align=left;" vertex="1" parent="1">
+        <mxCell id="44p-R-ChuCsgnd37TJSl-44" value="Flash programmer" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;fontFamily=sans-serif;align=left;" parent="1" vertex="1">
           <mxGeometry x="20" y="1010" width="160" height="20" as="geometry" />
         </mxCell>
-        <mxCell id="44p-R-ChuCsgnd37TJSl-53" value="" style="endArrow=none;html=1;fontSize=10;entryX=1;entryY=0;entryDx=0;entryDy=0;exitX=0;exitY=0;exitDx=0;exitDy=0;" edge="1" parent="1" source="4k450kukm1qvfWlfrWDw-159" target="4k450kukm1qvfWlfrWDw-54">
+        <mxCell id="44p-R-ChuCsgnd37TJSl-53" value="" style="endArrow=none;html=1;fontSize=10;entryX=1;entryY=0;entryDx=0;entryDy=0;exitX=0;exitY=0;exitDx=0;exitDy=0;" parent="1" source="4k450kukm1qvfWlfrWDw-159" target="4k450kukm1qvfWlfrWDw-54" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="570" y="1370" as="sourcePoint" />
             <mxPoint x="620" y="1320" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="44p-R-ChuCsgnd37TJSl-54" value="" style="endArrow=none;html=1;fontSize=10;entryX=0;entryY=1;entryDx=0;entryDy=0;exitX=1;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="4k450kukm1qvfWlfrWDw-54" target="4k450kukm1qvfWlfrWDw-159">
+        <mxCell id="44p-R-ChuCsgnd37TJSl-54" value="" style="endArrow=none;html=1;fontSize=10;entryX=0;entryY=1;entryDx=0;entryDy=0;exitX=1;exitY=1;exitDx=0;exitDy=0;" parent="1" source="4k450kukm1qvfWlfrWDw-54" target="4k450kukm1qvfWlfrWDw-159" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="760" y="1300" as="sourcePoint" />
             <mxPoint x="810" y="1250" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="44p-R-ChuCsgnd37TJSl-55" value="&amp;nbsp; Options" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;fontFamily=sans-serif;align=left;" vertex="1" parent="1">
+        <mxCell id="44p-R-ChuCsgnd37TJSl-55" value="&amp;nbsp; Options" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;fontFamily=sans-serif;align=left;" parent="1" vertex="1">
           <mxGeometry x="180" y="970" width="70" height="20" as="geometry" />
         </mxCell>
-        <mxCell id="44p-R-ChuCsgnd37TJSl-56" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E6E6E6;fontFamily=sans-serif;align=left;" vertex="1" parent="1">
+        <mxCell id="44p-R-ChuCsgnd37TJSl-56" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E6E6E6;fontFamily=sans-serif;align=left;" parent="1" vertex="1">
           <mxGeometry x="250" y="970" width="400" height="20" as="geometry" />
         </mxCell>
-        <mxCell id="44p-R-ChuCsgnd37TJSl-57" value="Modify bootloader" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;fontFamily=sans-serif;align=left;" vertex="1" parent="1">
+        <mxCell id="44p-R-ChuCsgnd37TJSl-57" value="Modify bootloader" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;fontFamily=sans-serif;align=left;" parent="1" vertex="1">
           <mxGeometry x="720" y="970" width="160" height="20" as="geometry" />
         </mxCell>
-        <mxCell id="44p-R-ChuCsgnd37TJSl-58" value="&lt;h1&gt;Programmer commands&lt;br&gt;&lt;/h1&gt;&lt;p&gt;* start discovery: encryption key&lt;/p&gt;&lt;p&gt;* stop discover&lt;/p&gt;&lt;p&gt;* get devices&lt;/p&gt;&lt;p&gt;--&amp;gt; devices[]: id, name, status, conn_id*, cnt*&lt;br&gt;&lt;/p&gt;&lt;p&gt;* send packet: packet, expect response, response iv*, wait timeout*&lt;/p&gt;&lt;p&gt;--&amp;gt; (if response is expected) status, response packet*&lt;br&gt;&lt;/p&gt;" style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;" vertex="1" parent="1">
+        <mxCell id="44p-R-ChuCsgnd37TJSl-58" value="&lt;h1&gt;Programmer commands&lt;br&gt;&lt;/h1&gt;&lt;p&gt;* start discovery: encryption key&lt;/p&gt;&lt;p&gt;* stop discover&lt;/p&gt;&lt;p&gt;* get devices&lt;/p&gt;&lt;p&gt;--&amp;gt; devices[]: id, name, status, conn_id*, cnt*&lt;br&gt;&lt;/p&gt;&lt;p&gt;* send packet: packet, expect response, response iv*, wait timeout*&lt;/p&gt;&lt;p&gt;--&amp;gt; (if response is expected) status, response packet*&lt;br&gt;&lt;/p&gt;" style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;" parent="1" vertex="1">
           <mxGeometry x="1275" y="1110" width="495" height="220" as="geometry" />
         </mxCell>
-        <mxCell id="44p-R-ChuCsgnd37TJSl-59" value="start*" style="rounded=0;whiteSpace=wrap;html=1;horizontal=0;fontFamily=sans-serif;" vertex="1" parent="1">
+        <mxCell id="44p-R-ChuCsgnd37TJSl-59" value="start*" style="rounded=0;whiteSpace=wrap;html=1;horizontal=0;fontFamily=sans-serif;" parent="1" vertex="1">
           <mxGeometry x="970" y="660" width="20" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="44p-R-ChuCsgnd37TJSl-60" value="" style="endArrow=none;html=1;fontSize=10;strokeWidth=7;" edge="1" parent="1">
+        <mxCell id="44p-R-ChuCsgnd37TJSl-60" value="" style="endArrow=none;html=1;fontSize=10;strokeWidth=7;" parent="1" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="760" y="730" as="sourcePoint" />
             <mxPoint x="130" y="110" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="44p-R-ChuCsgnd37TJSl-61" value="" style="endArrow=none;html=1;fontSize=10;strokeWidth=7;" edge="1" parent="1">
+        <mxCell id="44p-R-ChuCsgnd37TJSl-61" value="" style="endArrow=none;html=1;fontSize=10;strokeWidth=7;" parent="1" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="170" y="720" as="sourcePoint" />
             <mxPoint x="740" y="120" as="targetPoint" />
           </mxGeometry>
+        </mxCell>
+        <mxCell id="PDLHcwCDCv-TYCxfWe1G-1" value="block&lt;br&gt;range*" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=sans-serif;" vertex="1" parent="1">
+          <mxGeometry x="1190" y="560" width="80" height="40" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
