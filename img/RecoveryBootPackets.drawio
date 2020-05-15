@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2020-05-15T05:20:36.312Z" agent="5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.138 Safari/537.36" etag="fcbhqrf4qiGJgf4vqF6x" compressed="false" version="13.1.1" type="github">
+<mxfile host="app.diagrams.net" modified="2020-05-15T05:25:50.721Z" agent="5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.138 Safari/537.36" etag="PjezSf9WZO3sIEUDVIGM" compressed="false" version="13.1.1" type="github">
   <diagram id="t1ZCpZpJYKazgtFZVCPd" name="Page-1">
     <mxGraphModel dx="868" dy="492" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
@@ -619,7 +619,7 @@
         <mxCell id="44p-R-ChuCsgnd37TJSl-58" value="&lt;h1&gt;Programmer commands&lt;br&gt;&lt;/h1&gt;&lt;p&gt;* start discovery: encryption key&lt;/p&gt;&lt;p&gt;* stop discover&lt;/p&gt;&lt;p&gt;* get devices&lt;/p&gt;&lt;p&gt;--&amp;gt; devices[]: id, name, status, conn_id*, cnt*&lt;br&gt;&lt;/p&gt;&lt;p&gt;* send packet: packet, expect response, response iv*, wait timeout*&lt;/p&gt;&lt;p&gt;--&amp;gt; (if response is expected) status, response packet*&lt;br&gt;&lt;/p&gt;" style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;" parent="1" vertex="1">
           <mxGeometry x="1275" y="1110" width="495" height="220" as="geometry" />
         </mxCell>
-        <mxCell id="44p-R-ChuCsgnd37TJSl-59" value="start*" style="rounded=0;whiteSpace=wrap;html=1;horizontal=0;fontFamily=sans-serif;" parent="1" vertex="1">
+        <mxCell id="44p-R-ChuCsgnd37TJSl-59" value="bank*" style="rounded=0;whiteSpace=wrap;html=1;horizontal=0;fontFamily=sans-serif;" parent="1" vertex="1">
           <mxGeometry x="970" y="660" width="20" height="40" as="geometry" />
         </mxCell>
         <mxCell id="44p-R-ChuCsgnd37TJSl-60" value="" style="endArrow=none;html=1;fontSize=10;strokeWidth=7;" parent="1" edge="1">
