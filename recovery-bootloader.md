@@ -116,7 +116,7 @@ foreach block[32] from input (padding by previous value of block or 0 if input.l
     output = AES(key = block[0..15], plaintext = output ^ block[16..31])
 ```
 
-[![SAHF](img/SAHF.svg)](https://kildom.github.io/drawio/#img%2FSAHF.drawio)<br/>
+[![SAHF](img/SAHF.svg)](https://kildom.github.io/drawio/#img%2FSAHF.svg)<br/>
 **Simple AES-based Hash Function (SAHF)**.
     
 Encryption
@@ -157,7 +157,7 @@ Euqlivement:
 
 AES key is located at the end of bootloader's flash page (end of flash). It is programmed the same time as entire bootloader.
 
-[![DCFB](img/DCFB.svg)](https://kildom.github.io/drawio/#img%2FDCFB.drawio)<br/>
+[![DCFB](img/DCFB.svg)](https://kildom.github.io/drawio/#img%2FDCFB.svg)<br/>
 **Double Cipher Feedback (DCFB)** encryption and decryption.
 
 >> Warning!!! Wrong name should be DCFB instead of DCTF
