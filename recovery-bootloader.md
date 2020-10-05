@@ -5,6 +5,7 @@ Bootloader is as small as possible. It has two main functionalities:
 
  * Start App from flash
  * Download App to RAM and start it
+   * The App in RAM is responsible for rest of the work, e.g. flashing app or bootloader, changing config
  
 Application running from RAM has no ISR support.
 
@@ -109,9 +110,11 @@ Hash algorithm
 --------------
 
 Hash can be calculated by AES based hash (small footprint because of HW AES accelerator):
+```
 output[16] = 0
 foreach block[32] from input (padding by previous value of block or 0 if input.len < 32)
     output = AES(key = block[0..15], plaintext = output ^ block[16..31])
+```
 
 [![SAHF](img/SAHF.svg)](https://kildom.github.io/drawio/#img%2FSAHF.drawio)<br/>
 **Simple AES-based Hash Function (SAHF)**.
