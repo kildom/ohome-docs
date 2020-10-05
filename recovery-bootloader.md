@@ -1,58 +1,56 @@
-```
+Flash organization
+------------------
+
 FOR NRF51
+```
+                                                                           v--- fixed address e.g. 4096
+| modified vect table | bootloader | ... padding ... | conf: name, aes_key | original vect table | rest of APP .... |
 
-      | modified vect table | pages ... | original vect table | bootloader + aes_key |
-        RESET -> bootloader RESET
-        Initial SP -> bootloader Initial SP
+```
+modified vect table:
+ * RESET -> bootloader RESET
+ * Initial SP -> bootloader Initial SP
+ * rest of vector table unchanged
 
-      original vect table and bootloader are located  at the region protected by PROTREG63 bit.
+FOR NRF52
+```
+                                                                     v--- fixed address 4096
+| bootloader with vect table | ... padding ... | conf: name, aes_key | APP with its vector table ... |
+```
 
-Above approach is not safe. App can modify page 0 and make bootloader unusable.
-Enrything (bootloader, irq jumps to app and aes_ket) have to be at the beginnig protected by PROTREG0 bit.
+bootloader is located at the region protected by PROTREG0 bit.
 
-IRQ optimization:
-Last page of bootloader contains direct jumps to IRQ handlers in app.
-Before bootloader starts the app it checks IRQ vectors of the app and compares them with jumps in bootloader.
-If there is a difference bootloader erases page and puts a new jumps there.
-Each entry in jumps page is fixed size, so vectors in page 0 are fixed.
-If verctor in app is unexpected then it falls back to default jump: read app vector value and jump there.
-
+Communication example
+---------------------
+```
 [programmer]    [devide]
 
-> start catch user event
+{start discovery clicked}
 send catch
+wait
 send catch
+wait
 send catch
-send catch
+wait
                 power on
 send catch
-send catch
-send catch
-> stop catch user event
-send catch 100
-send catch 99
-...
-send catch 1
-send catch 0
-                send catched 10
-                delay random
-                send catched 9
-                delay random
-                ...
-                send catched 0
-run bootloader
-                bootloader running
-> flash user event
+wait
+send catch      {received}
+wait            wait random
+{receive error} send caught
+send catch      {received}
+wait            wait random
+{received}      send caught
+run bootloader  {received}
+{received}      bootloader running
+
+{flash clicked}
 erase pages 0..3
                 erase done
-sendBlock 0
-sendBlock 1
+sendBlock 1                   // block 0 is send at the end of programming
 ...
 sendBlock 31 and get status
                 ok / missing block bitmap / error
-                    missing block bitmap - contains 32 bits for blocks 32*N .. 32*N+31
-                    and block in command is in this range. Writing a new block outside
-                    this range clears bits internally in device.
 sendBlock 32
 ...
 sendBlock 347 and get status
