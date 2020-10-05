@@ -1,3 +1,13 @@
+General information
+-------------------
+
+Bootloader is as small as possible. It has two main functionalities:
+
+ * Start App from flash
+ * Download App to RAM and start it
+ 
+Application running from RAM has no ISR support.
+
 Flash organization
 ------------------
 
@@ -19,6 +29,41 @@ FOR NRF52
 ```
 
 bootloader is located at the region protected by PROTREG0 bit.
+
+First stage communication example
+---------------------------------
+```
+[programmer]    [devide]
+
+{start discovery clicked}
+send catch
+wait
+send catch
+wait
+send catch
+wait
+                power on
+send catch
+wait
+send catch      {received}
+wait            wait random
+{receive error} send caught
+send catch      {received}
+wait            wait random
+{received}      send caught
+
+sendBlock 0
+sendBlock 1
+....
+sendBlock 84
+getStatus
+               missing block bitmap
+sendBlock 3
+sendBlock 27
+getStatus
+               ok
+runRAMApp
+```
 
 Communication example
 ---------------------
@@ -49,14 +94,16 @@ erase pages 0..3
                 erase done
 sendBlock 1                   // block 0 is send at the end of programming
 ...
-sendBlock 31 and get status
+sendBlock 31; get status
                 ok / missing block bitmap / error
+erase pages 4..7
+                erase done
 sendBlock 32
 ...
-sendBlock 347 and get status
+sendBlock 347; get status
                 ok / missing block bitmap / error
-get CRC
-                CRC
+check HASH of blocks 1..347
+                ok / error
 > run user event
 run app
                 > soft reset
