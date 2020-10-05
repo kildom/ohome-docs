@@ -260,3 +260,6 @@ void aes_hash(const uint8_t* data, size_t size, uint8_t* hash)
     memcpy(hash, &aes_buffer[HASH_OUT], 16);
 }
 ```
+
+
+[![SAHF](img/RecoveryBootPackets.svg)](https://kildom.github.io/drawio/#img%2FRecoveryBootPackets.svg)
