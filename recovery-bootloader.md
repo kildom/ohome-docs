@@ -13,7 +13,7 @@ Flash organization
 
 FOR NRF51
 ```
-                                                                           v--- fixed address e.g. 4096
+                                                                           v--- fixed address e.g. 1024
 | modified vect table | bootloader | ... padding ... | conf: name, aes_key | original vect table | rest of APP .... |
 
 ```
@@ -65,31 +65,14 @@ getStatus
 runRAMApp
 ```
 
-Communication example
+If bootloader was not catched then do softreset.
+    After softreset check reset reason and go directly to the app.
+
+RAM APP Communication example
 ---------------------
 ```
 [programmer]    [devide]
 
-{start discovery clicked}
-send catch
-wait
-send catch
-wait
-send catch
-wait
-                power on
-send catch
-wait
-send catch      {received}
-wait            wait random
-{receive error} send caught
-send catch      {received}
-wait            wait random
-{received}      send caught
-run bootloader  {received}
-{received}      bootloader running
-
-{flash clicked}
 erase pages 0..3
                 erase done
 sendBlock 1                   // block 0 is send at the end of programming
@@ -111,68 +94,49 @@ run app
 run app
 run app
 run app
+```
 
-... OR ...
-> flash bootloader user event
-sendBlock 0 (to RAM)
-sendBlock 1
-...
-sendBlock 8 and get status
-                ok / missing block bitmap / error
-get CRC
-                CRC
-rewrite bootloader
-> run user event
-run app
-run app
-run app
-run app
-run app
+Radio parameters
+----------------
 
-Init radio
-    2Mbit,
-    5 byte addr (MAGIC value, different for each side)
-    8 bit LENGTH
-    no S0, S1
-    3 byte CRC (including address)
-    
-If bootloader was not catched then do softreset.
-    After softreset check reset reason and go directly to the app.
+ *   2Mbit,
+ *   5 byte addr (MAGIC value, different for each side)
+ *   8 bit LENGTH
+ *   no S0, S1
+ *   3 byte CRC (including address)
+ 
+Hash algorithm
+--------------
 
-CRC may be replaced by AES based hash (small footprint because of HW AES accelerator):
+Hash can be calculated by AES based hash (small footprint because of HW AES accelerator):
 output[16] = 0
 foreach block[32] from input (padding by previous value of block or 0 if input.len < 32)
     output = AES(key = block[0..15], plaintext = output ^ block[16..31])
+
+[![SAHF](img/SAHF.svg)](https://kildom.github.io/drawio/#img%2FSAHF.drawio)<br/>
+**Simple AES-based Hash Function (SAHF)**.
     
-Encryption:
-*  Both parts have generated AES key = md5(password & devide unique address)
+Encryption
+----------
+*  Both parts have generated AES key = sha256(password & devide unique address)
+    * it is devided into two parts: KEY1, KEY2
     * device unique address is placed in 'send catched'
-* 'run bootloader' contains AES_CFB encrypted CR = random bytes (different for each connection) and magic bytes
 * device genrates random connection id (96 bits) and counter start value (32 bits).
-* 'bootloader running' contains AES_CFB (CR, conn_id, counter)
 * all further packets will have following structure:
     * lower 2 bytes of counter in plain text
         (higher 2 bytes of counter other end have to predict based on cyclic property of lower 2 bytes)
-    * ciphertext = AES_PECB(IV = AES(conn_id & counter), content & zeros)
+    * ciphertext = AES_DCTF(IV = conn_id & counter, content & zeros)
         (if receiving part gets zeros != 0 then packet was corrupted)
         (total overhead for encryption and authentication of each packet 2 + zeros bytes)
-* counter is increased on each transmission (except retransmission)
+* counter is increased on each request (retransmission and response use the same counter value)
 
-AES_PECB:
-C[0] = AES(IV) ^ P[0]
-C[1] = AES(P[0]) ^ P[1]
-...
-P[0] = AES(IV) ^ C[0]
-P[1] = AES(P[0]) ^ C[1]
-...
-
-Or better AES_DCTF provides:
-      * full data security
-      * error propagation
-      * can use used instead of both AES_CFB and AES_PECB
-      * the same algorithm for encryption and decrition, but with inverted KEYs
-AES_DCTF:
-AES1(...) with KEY1 = KEY, AES2(...) with KEY2 = KEY ^ 1
+AES_DCTF provides:
+   * full data security
+   * error propagation
+   * can use used instead of both AES_CFB and AES_PECB
+   * the same algorithm for encryption and decrition, but with inverted KEYs
+```
+AES1(...) with KEY1, AES2(...) with KEY2
 C[0] = AES2(IV) ^ T[0] ; T[0] = AES1(IV) ^ P[0]
 C[1] = AES2(T[0]) ^ T[1] ; T[1] = AES1(T[0]) ^ P[1]
 C[2] = AES2(T[1]) ^ T[2] ; T[2] = AES1(T[1]) ^ P[2]
@@ -180,26 +144,18 @@ C[2] = AES2(T[1]) ^ T[2] ; T[2] = AES1(T[1]) ^ P[2]
 P[0] = AES1(IV) ^ T[0] ; T[0] = AES2(IV) ^ C[0]
 P[1] = AES1(T[0]) ^ T[1] ; T[1] = AES2(T[0]) ^ C[1]
 P[2] = AES1(T[1]) ^ T[2] ; T[2] = AES2(T[1]) ^ C[2]
+````
 
 Euqlivement:
-   AES_DCTF_ENCRYPT(key, iv, plain) = AES_CTF_DECRYPT(key ^ 1, iv, AES_CTF_ENCRYPT(key, iv, plain))
-   AES_DCTF_DECRYPT(key, iv, cipher) = AES_CTF_DECRYPT(key, iv, AES_CTF_ENCRYPT(key ^ 1, iv, cipher))
-   
-OR for better security key ^ 1 can be replaced by some more advanced method, e.g.:
- * key2 = AES(key1, key1)
- * OR assume that connection key is 256-bit long with concatenated two keys:
-   * key1 = md5(pwd & devide unique address), key2 = md5("KEY2" & key1)
-   * OR key = sha256(pwd & devide unique address)
+```
+   AES_DCTF_ENCRYPT(key, iv, plain) = AES_CTF_DECRYPT(key2, iv, AES_CTF_ENCRYPT(key1, iv, plain))
+   AES_DCTF_DECRYPT(key, iv, cipher) = AES_CTF_DECRYPT(key1, iv, AES_CTF_ENCRYPT(key2, iv, cipher))
+```
 
 AES key is located at the end of bootloader's flash page (end of flash). It is programmed the same time as entire bootloader.
 
-```
-
 [![DCFB](img/DCFB.svg)](https://kildom.github.io/drawio/#img%2FDCFB.drawio)<br/>
 **Double Cipher Feedback (DCFB)** encryption and decryption.
-
-[![SAHF](img/SAHF.svg)](https://kildom.github.io/drawio/#img%2FSAHF.drawio)<br/>
-**Simple AES-based Hash Function (SAHF)**.
 
 >> Warning!!! Wrong name should be DCFB instead of DCTF
 
