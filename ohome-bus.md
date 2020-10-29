@@ -3,7 +3,10 @@ ohome bus
 
 This darft describes how to transfer packets over a wires.
 It also defines how to handle device addres discovery.
-This protocol is used for communication between network MASTER and wire connected DEVICES (NODES).
+This protocol is used for communication between network nodes.
+There is no special node during normal communication.
+Address discovery is started by the user on one of network nodes.
+This node becomes discovery controller for time of address discovery.
 
 Higher level protocol is described somewhere else. The same higher level protocol is used for radio transmission.
 
@@ -13,19 +16,13 @@ General notes
  * Electrical interface: RS-485 with multiple nodes, half duplex	
  * Signaling: UART 8-bit, no parity, 115200 (or slower if it is too fast)	
  * nRF5x gateway has its own address and also handles wireless network nodes addresses	
- * Address has to be saved in NV memory and keeped during flashing	
- * Following points may be skipped if autodiscovery process will be implemented	
-	  * Address must be programmed on fist time programming (loading bootloader) and can be configured leter
-	  * Bootloader must use this protocol and use the same address as application
-	  * Discovery process will be triggerd by the user, e.g. when a new device was connected.
-	  * Discovery process will query each address and wait 25ms (default max response time) for response.
+	  * Wireless nodes has addresses from different address space
+ * Address has to be saved in NV memory and keeped during software update	
  * 25 ms limit may be changed in this specification if it is too high	
  * It should be possible to attach special device for electrical diagnostics
- 	  * It can send request to each device (via master) that forces it to response with some special
+ 	  * It can send request to each device that forces it to response with some special
 	    pattern that can be used to generate eye diagram. This allows to check signal quality at any
 	    place on the network from any endpoint.
-	  * User should be able to turn on/off quering of that device by master. Master should timeout
-	    if there is no response from that probe (very long time e.g. 8h)
 
 Transaction content
 -----------
