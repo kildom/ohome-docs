@@ -14,11 +14,8 @@ General notes
 -------------
 
  * Electrical interface: RS-485 with multiple nodes, half duplex	
- * Signaling: UART 8-bit, no parity, 115200 (or slower if it is too fast)	
- * nRF5x gateway has its own address and also handles wireless network nodes addresses	
-	  * Wireless nodes has addresses from different address space
- * Address has to be saved in NV memory and keeped during software update	
- * 25 ms limit may be changed in this specification if it is too high	
+ * Signaling: UART 8-bit, no parity, 115200 (or slower if it is too fast)
+ * Address has to be saved in NV memory and keeped during software update
  * It should be possible to attach special device for electrical diagnostics
  	  * It can send request to each device that forces it to response with some special
 	    pattern that can be used to generate eye diagram. This allows to check signal quality at any
@@ -27,48 +24,33 @@ General notes
 Transaction content
 -----------
 
-| Sender | bits 7..1 | bit 0 |
-|--------|-----------|-----|
-| M | ADDRESS [1..127] | 1 |
-| M | DATA [0..127]    | 0 |
-| M | END [0]          | 1 |
-| D | DATA [0..127]    | 0 |
-| D | END [0] or ADDRESS [1..127] | 1 |
+First stage encoding
 
-DATA is compressed from 8-bits to 7-bits.
+| Length | Value |
+|--------|-------|
+| 1 | Start byte 9B |
+| 1 | Replacement byte |
+| 0..254 | Data |
+| 1 | Replacement byte (if data length > 254) |
+| 0..254 | Data |
+| 1 | Replacement byte (if data length > 2 * 254) |
+| ... | ... |
 
-Types of transactions:
+Packet format:
 
- * Master side
+| Length | Value |
+|--------|-------|
+| 1 | Source address |
+| 1 | Total known addresses |
+| 1 | Operation |
+|   | 0 - none |
+|   | 1 - give rest of timeslot to different device |
+|   | 2 - force "Total known addresses" |
+| 1* | Next device address (if operation 1) |
+| 2 | Length |
+| 0..65535 | Data |
+| 2 | CRC-16 |
 
-   | Send and query | Query only |
-   |---------|-------|
-   | ADDRESS | ADDRESS |
-   | DATA[...] | END |
-   | END |   |
-
- * Device side
-   
-   | Empty | With data | Data and hint that more is waiting |
-   |-------|-----------|---------|
-   | END   | DATA[...] | DATA[...] |
-   |       | END       | ADDRESS   |
-   |       |           | (master may skip ADDRESS<br>if next transactio starts<br>with the same address) |
-   
-
-Transfer parameters
------------
-
-For devices with slow UART.
-
-| Type | Name | Default value | Comments |
-|-------|------------|-------|---------|
-|uint8_t|	block delay|		250|	0 - no limits, interval = block_delay + block_size * byte_time [0.08680(5) ms] |
-|uint8_t|	start delay|		250|	0 - no limits |
-|uint8_t|	max response time|		250	| |
-|uint8_t|	block size|		1	| skipped if block delay == 0 |
-
-Delay unit is 0.1 ms. "Default value" is a value that is assumed before device paramteres arrived.
 
 Discovery options
 ----------------
