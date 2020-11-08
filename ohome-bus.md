@@ -20,39 +20,32 @@ General notes
  	  * It can send request to each device that forces it to response with some special
 	    pattern that can be used to generate eye diagram. This allows to check signal quality at any
 	    place on the network from any endpoint.
+ * Time is devided into 20ms slots for each device. Device address is a time slot number.
+ * There is one additional empty time slot that can be used to add new devices.
+   * If device with uninitialized address is attached it listens for incoming packets and sends packet at empty time slot increasing total time slots.
+ * There are special packets for network management: adding/removing time slots, chaning device address.
+   * They can be used by new device that wants automatically connect to network.
+   * Or PC program to manually manage the network.
 
-Transaction content
+Packet format
 -----------
 
-First stage encoding
-
 | Length | Value |
 |--------|-------|
-| 1 | Start byte 9B |
+| 1 | Start byte 0x9B |
 | 1 | Replacement byte |
-| 0..254 | Data |
-| 1 | Replacement byte (if data length > 254) |
-| 0..254 | Data |
-| 1 | Replacement byte (if data length > 2 * 254) |
-| ... | ... |
-
-Packet format:
-
-| Length | Value |
-|--------|-------|
 | 1 | Source address |
 | 1 | Total known addresses |
-| 1 | Operation |
-|   | 0 - none |
+| 1 | Flags |
+|   | 0 - this is management packet |
 |   | 1 - give rest of timeslot to different device |
-|   | 2 - force "Total known addresses" |
-| 1* | Next device address (if operation 1) |
-| 2 | Length |
-| 0..65535 | Data |
+| 1* | Next device address (if flag 1) |
+| 1 | Length |
+| 0..246 | Data |
 | 2 | CRC-16 |
 
 
-Discovery options
+Discovery options (not up to date)
 ----------------
 
 ### Option 1
