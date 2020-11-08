@@ -26,6 +26,7 @@ General notes
  * There are special packets for network management: adding/removing time slots, chaning device address.
    * They can be used by new device that wants automatically connect to network.
    * Or PC program to manually manage the network.
+ * After reset device is listening bus to synchronize his time slot. If there is nothing on the bus it waits specific time (depends on address) and starts sending without synchronization. Other devices that also after reset will synchronize to the first device.
 
 Packet format
 -----------
