@@ -26,7 +26,7 @@ Sending
 * It sends information:
   * Packet number incremented from previous corrently received packet
   * When it wants to send next packet and how long it will be
-  * When is the closest scheduled packet
+  * When is the closest scheduled packet and how long
 * It may send information that rest of this time slot is given to a device with specific address.
 
 Receiving
@@ -52,10 +52,16 @@ Packet format
 |--------|-------|
 | 1 | Start byte 0x9B |
 | 1 | Replacement byte |
-| 1 | Flags |
-|   | 0 - this is management packet |
-|   | 1 - give rest of timeslot to different device |
-| 1* | Next device address (if flag 1) |
+| 1 | Packet number |
+| 3 bit | Type |
+|   | 0 - normal data packet (data: upper level packet) |
+|   | 1 - give rest of timeslot to different device (data: device address)  |
+|   | 2 - initialization (data: empty) |
+| 2 bit | scheduled time slot length |
+| 2 bit | closest time slot length |
+| 1 bit | unused |
+| 1 | scheduled time slot start tinme |
+| 1 | closest time slot start tinme |
 | 1 | Length |
-| 0..246 | Data |
+| 0..247 | Data |
 | 2 | CRC-16 |
