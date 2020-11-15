@@ -53,13 +53,13 @@ Packet format
 | 1 | Start byte 0x9B |
 | 1 | Replacement byte |
 | 1 | Packet number |
-| 3 bit | Type |
+| 2 bit | Type |
 |   | 0 - normal data packet (data: upper level packet) |
 |   | 1 - give rest of timeslot to different device (data: device address)  |
 |   | 2 - initialization (data: empty) |
 | 2 bit | scheduled time slot length |
 | 2 bit | closest time slot length |
-| 1 bit | unused |
+| 2 bit | unused |
 | 1 | scheduled time slot start time |
 | 1 | closest time slot start time |
 | 1 | Length |
