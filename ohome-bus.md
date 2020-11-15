@@ -36,7 +36,7 @@ Receiving
   * Check if closest scheduled packet is matching expected
   * Check if next packet is not overlapping with currently scheduled
   * Check if this packet is inside sheduled time slot (except initialization packet)
-  * Check if the same packet number is repeated as last send packet from this device then go to unsychronized mode
+  * Check if packet number repeats last packet number send from this device
 * Update packet schedule with data from this packet.
   
 Unsychronized mode
@@ -60,8 +60,8 @@ Packet format
 | 2 bit | scheduled time slot length |
 | 2 bit | closest time slot length |
 | 1 bit | unused |
-| 1 | scheduled time slot start tinme |
-| 1 | closest time slot start tinme |
+| 1 | scheduled time slot start time |
+| 1 | closest time slot start time |
 | 1 | Length |
 | 0..247 | Data |
 | 2 | CRC-16 |
