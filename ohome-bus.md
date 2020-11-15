@@ -65,3 +65,12 @@ Packet format
 | 1 | Length |
 | 0..247 | Data |
 | 2 | CRC-16 |
+
+Encoding
+--------
+
+Encoding is done on packet to make sure that start byte (0x9B) is always at the beginning of the packet.
+* CRC-16 is calculated starting from byte 2 (packet number) and ends at the end of data.
+* Assume that *Replacement byte* is 0x9B.
+* Find one byte value that is not used in entire packet. This is actual *Replacement byte*.
+* Replace all 0x9B bytes with *Replacemet byte* except first byte (*Start byte*).
