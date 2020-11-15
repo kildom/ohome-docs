@@ -31,6 +31,12 @@ FOR NRF52
 
 bootloader is located at the region protected by PROTREG0 bit.
 
+FOR SOFTDEVICE (both 51 and 52)
+
+Bootloader is injected into unused space of MBR with reset vector patched to point to Recovery Bootloader.
+Original reset vector of MBR is called if Recovery Bootloader was not activated.
+Application and standard bootloader does not need special handling of Recovery Bootloader.
+
 First stage communication example
 ---------------------------------
 ```
